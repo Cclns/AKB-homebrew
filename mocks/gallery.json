@@ -1,0 +1,14 @@
+{
+  "mocks/layout1.jsx": {
+    "label": "Best Process First",
+    "description": "Leads with a pinned Best Process checklist, followed by auto-suggested KB articles as a compact feed below."
+  },
+  "mocks/layout2.jsx": {
+    "label": "Tabbed KB Browser",
+    "description": "Two tabs let agents switch between auto-suggested articles and the pinned best-practice checklist."
+  },
+  "mocks/layout3.jsx": {
+    "label": "Sectioned KB Guide",
+    "description": "An accordion organizes content into three named sections — Best Process, Top Suggestions, and Related — so agents can expand what they need."
+  }
+}
