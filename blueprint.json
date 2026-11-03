@@ -1,0 +1,76 @@
+{
+  "app_title": "KB Guide and Best Process",
+  "description": "A ticket sidebar app that searches articles only within the Agent Knowledge Base category and provides detailed, matched workflow checklists for agents.",
+  "required_docs": [
+    "Ticket_sidebar_ticket.md",
+    "help_center/help-center-api/help_center_search.md",
+    "help_center/help-center-api/categories.md",
+    "accordion.md",
+    "buttons.md",
+    "forms.md",
+    "tags.md",
+    "typography.md",
+    "loaders.md",
+    "anchor.md",
+    "client_api.md"
+  ],
+  "location": "ticket_sidebar",
+  "architecture": "On mount the app reads ticket.conversation, ticket.tags, and ticket.isNew via ZAF. For a new ticket it selects the first non-empty customer-authored conversation message; for an existing ticket it selects the newest such message by timestamp. It matches a detailed best-process rule using the selected message and ticket tags, resolves the exact Agent Knowledge Base category by name from the Help Center categories endpoint, then searches articles using that category ID as a required filter. The persistent manual search input is blank on load and remains above the suggestions context label. It does not search community posts, external records, or other categories. Results are split into Top Suggestions (first 4) and Related Articles (next 3). All sections appear in a Garden Accordion.",
+  "garden_components": [
+    "Accordion",
+    "Button",
+    "Input",
+    "Field",
+    "Tag",
+    "Anchor",
+    "Well",
+    "Spinner",
+    "SM",
+    "OrderedList"
+  ],
+  "primary_features": [
+    "Auto-suggest scoped Help Center articles using the first customer-authored message on a new ticket and the newest customer-authored message on an existing ticket",
+    "Display top suggestions with title, stripped excerpt, date, and label tag",
+    "Pin a detailed best-process checklist matched from the selected customer message and ticket tags",
+    "Display related articles from the same Agent Knowledge Base category",
+    "Keep a blank manual KB search field above the suggestions context label, with Enter and Go search actions"
+  ],
+  "tech_stack": [
+    "React",
+    "Zendesk Garden v9",
+    "ZAF APIs",
+    "Zendesk Help Center Search REST API",
+    "styled-components"
+  ],
+  "file_structure": [
+    "App.jsx",
+    "appBuilderManifest.json",
+    "blueprint.json",
+    "changelog.json",
+    "components/ArticleList.jsx",
+    "components/BestProcess.jsx",
+    "constants.js",
+    "dist/asset/logo-small.png",
+    "dist/asset/logo.png",
+    "dist/asset/logo.svg",
+    "dist/bundle.js",
+    "dist/bundle.js.map",
+    "index.jsx",
+    "manifest.json",
+    "memory.md",
+    "mock.js",
+    "mocks/gallery.json",
+    "mocks/layout1.jsx",
+    "mocks/layout2.jsx",
+    "mocks/layout3.jsx",
+    "styles/AppStyles.js",
+    "utils/kbApi.js",
+    "utils/processUtils.js"
+  ],
+  "accessibility": "Search field has an accessible hidden label and supports Enter to search. Article links open in a new tab with rel noopener noreferrer. Spinner has aria-label. Accordion uses semantic heading level 3. Checklist uses an ordered list, and tag labels are descriptive.",
+  "integration_details": "The app reads ticket.conversation, ticket.tags, and ticket.isNew using ZAF. For new tickets it chooses the first non-empty conversation message authored by an end user, and for existing tickets it chooses the newest non-empty end-user message by timestamp. It requests Help Center categories from /api/v2/help_center/categories, requires an exact category name match for Agent Knowledge Base with a valid ID, and calls /api/v2/help_center/articles/search with that category ID on every article search. No unscoped search fallback is used; the app does not search community posts or external records. No external third-party integration is used.",
+  "additional_information": {
+    "process_matching": "Six detailed built-in workflows: Refund Request, Billing Issue, Technical Issue, Cancellation Request, Shipping and Delivery, and Account Access. Matching checks the selected customer-authored message and ticket tags. Each workflow includes verification, policy or diagnostic checks, approved action handling, documentation, customer updates, and follow-up steps where relevant.",
+    "search_behaviour": "On load, a new ticket uses the first non-empty end-user message in ticket.conversation; an existing ticket uses the newest non-empty end-user message by timestamp. The manual search input remains empty and visible above the suggestions context label. Agents can enter their own query and search by pressing Enter or selecting Go. If no customer message is available, automatic search does not run and the context reports that no customer message is available. Top 4 results appear under Top Suggestions with excerpts. Results 5-7 appear under Related Articles without excerpts. All article searches include the Agent Knowledge Base category ID. If that exact category is not returned or has no ID, the app displays an error and does not search a different category."
+  }
+}
