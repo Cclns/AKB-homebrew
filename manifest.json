@@ -1,0 +1,19 @@
+{
+  "name": "KB Guide and Best Process",
+  "author": {
+    "name": "Tanja HOHN",
+    "email": "tanja.hohn@vestiairecollective.com"
+  },
+  "defaultLocale": "en",
+  "location": {
+    "support": {
+      "ticket_sidebar": {
+        "url": "assets/iframe.html",
+        "flexible": true
+      }
+    }
+  },
+  "version": "1.0",
+  "frameworkVersion": "2.0",
+  "domainWhitelist": []
+}
