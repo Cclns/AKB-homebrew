@@ -1,0 +1,26 @@
+[
+  {
+    "version": 6,
+    "summary": "Use the first customer message for new tickets and the newest customer message for existing tickets; Update the preview mock with multiple customer messages to demonstrate new-ticket selection"
+  },
+  {
+    "version": 5,
+    "summary": "Use the latest customer-authored conversation message for automatic KB suggestions instead of the ticket subject; Keep the manual KB search field blank on load while preserving Enter and Go search actions; Match best-process workflows against the customer message and ticket tags; Update preview conversation data to reflect customer-message search"
+  },
+  {
+    "version": 4,
+    "summary": "Expand all six best-process workflows with detailed agent handling steps; Require a valid exact Agent Knowledge Base category before article search; Keep article searches scoped to the Agent Knowledge Base category and document the restriction"
+  },
+  {
+    "version": 3,
+    "summary": "Keep the KB search field visible above the suggestions context label; Remove the Search KB toggle and conditional search controls"
+  },
+  {
+    "version": 2,
+    "summary": "Scope automatic and manual article searches to the Agent Knowledge Base category; Resolve the category by name before searching and report a missing category clearly; Update preview mock data and app documentation for the selected knowledge base"
+  },
+  {
+    "version": 1,
+    "summary": "Build KB Guide and Best Process app from layout3 mock; Add real ZAF integration — reads ticket.subject and ticket.tags on mount; Add Help Center Search API call to auto-suggest relevant articles; Add best-process matching across 6 ticket categories based on keywords and tags; Split search results into Top Suggestions (4 articles with excerpts) and Related Articles (3 articles); Add manual KB search toggle in footer with pre-filled ticket subject; Add loading spinner, empty states, and error display; Decompose into BestProcess and ArticleList components with shared AppStyles"
+  }
+]
